@@ -27,21 +27,16 @@ p {
   font-size: 20px;
   margin: 12px 0;
 }
-
 #dice {
   font-size: 90px;
   cursor: pointer;
   margin: 25px 0;
-  transition: 0.2s;
 }
-
-
 
 #message {
   color: #ffd166;
   font-weight: bold;
 }
-
 
 button {
   padding: 12px 25px;

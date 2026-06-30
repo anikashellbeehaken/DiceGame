@@ -1,48 +1,76 @@
-console.log("Script is succcessfully running!");
+console.log("JS file is connected");
 
-const dice = document.getElementById("dice"); 
-const targetText = document.getElementById("target"); 
+console.log("Script is successfully running!");
+
+const dice = document.getElementById("dice");
+const targetText = document.getElementById("target");
 const totalText = document.getElementById("total");
-const gamesText = document.getElementById("games"); 
-const message = document.getElementById("message"); 
-const resetBtn = document.getElementById("resetBtn"); 
+const gamesText = document.getElementById("games");
+const message = document.getElementById("message");
+const resetBtn = document.getElementById("resetBtn");
 
-let target = 20; 
-let total = 0; 
-let gamesPlayed = 0;  
+
+let target = Math.floor(Math.random() * 21) + 10;
+let total = 0;
+let gamesPlayed = 0;
+
+
+targetText.innerText = target;
+totalText.innerText = total;
+gamesText.innerText = gamesPlayed;
+
 dice.addEventListener("click", function () {
-  const randomNumber = Math.floor(Math.random() * 6) + 1; 
 
-  if (total + randomNumber > target) {
-    message.innerText = `You rolled ${randomNumber}. Will exceed the target.`;
+  if (total === target) {
+    message.innerText = " You already completed this game! Click 'New Game' to play again.";
     return;
   }
 
-  total = total + randomNumber;
+
+  const randomNumber = Math.floor(Math.random() * 6) + 1;
+
+  
+  gamesPlayed++;
+  gamesText.innerText = gamesPlayed;
+
+  
+  if (total + randomNumber > target) {
+    message.innerText =
+      ` You rolled ${randomNumber}. It exceeds the target, so this roll was skipped.`;
+    return;
+  }
+
+  
+  total += randomNumber;
   totalText.innerText = total;
 
+  
   message.innerText = `You rolled ${randomNumber}.`;
 
-  if (total === target) {
-    gamesPlayed++;
-    gamesText.innerText = gamesPlayed;
-
-    message.innerText = "Target Successfully fulfilled! New game started.";
-
-    total = 0;
-    totalText.innerText = total;
-  }
-}); 
-
-resetBtn.addEventListener("click", function () {
-  total = 0;
-  gamesPlayed = 0;
   
+  if (total === target) {
+    message.innerText =
+      " Target successfully fulfilled! Click 'New Game' to play again.";
+  }
 
-  totalText.innerText = total;
-  gamesText.innerText = gamesPlayed;
-  message.innerText = "Game reset! Click the dice to play.";
 });
 
+
+resetBtn.addEventListener("click", function () {
+
+
+  target = Math.floor(Math.random() * 21) + 10;
+
+  
+  total = 0;
+  gamesPlayed = 0;
+
+  
+  targetText.innerText = target;
+  totalText.innerText = total;
+  gamesText.innerText = gamesPlayed;
+
+  message.innerText = "New game started! Click the dice to play.";
+});
 
 
