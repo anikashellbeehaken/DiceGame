@@ -8,7 +8,14 @@ const totalText = document.getElementById("total");
 const gamesText = document.getElementById("games");
 const message = document.getElementById("message");
 const resetBtn = document.getElementById("resetBtn");
-
+const diceFaces = [
+  "\u2680", // ⚀ = 1
+  "\u2681", // ⚁ = 2
+  "\u2682", // ⚂ = 3
+  "\u2683", // ⚃ = 4
+  "\u2684", // ⚄ = 5
+  "\u2685"  // ⚅ = 6
+];
 
 let target = Math.floor(Math.random() * 21) + 10;
 let total = 0;
@@ -26,14 +33,14 @@ dice.addEventListener("click", function () {
     return;
   }
 
-
   const randomNumber = Math.floor(Math.random() * 6) + 1;
 
-  
-  gamesPlayed++;
-  gamesText.innerText = gamesPlayed;
+dice.innerText = diceFaces[randomNumber - 1];
 
-  
+gamesPlayed++;
+gamesText.innerText = gamesPlayed;
+
+
   if (total + randomNumber > target) {
     message.innerText =
       ` You rolled ${randomNumber}. It exceeds the target, so this roll was skipped.`;
