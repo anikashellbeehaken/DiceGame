@@ -72,5 +72,3 @@ resetBtn.addEventListener("click", function () {
 
   message.innerText = "New game started! Click the dice to play.";
 });
-
-
